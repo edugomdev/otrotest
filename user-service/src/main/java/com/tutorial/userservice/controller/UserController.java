@@ -89,25 +89,25 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
     
-    private ResponseEntity<List<Car>> failBackGetCars(@PathVariable("userId") int userId){
+    private ResponseEntity<List<Car>> failBackGetCars(@PathVariable("userId") int userId,Throwable throwable){
     	return new ResponseEntity("El usuario "+ userId + " tiene los coches en el taller", HttpStatus.OK);
     }
-    private ResponseEntity<Car> failBackSaveCar(@PathVariable("userId") int userId, @RequestBody Car car) {
+    private ResponseEntity<Car> failBackSaveCar(@PathVariable("userId") int userId, @RequestBody Car car, Throwable throwable) {
     	return new ResponseEntity("El usuario "+ userId + " no tinee dinero para coches", HttpStatus.OK);
         
     }
     
-    private ResponseEntity<List<Bike>> failBackGetBikes(@PathVariable("userId") int userId) {
+    private ResponseEntity<List<Bike>> failBackGetBikes(@PathVariable("userId") int userId, Throwable throwable) {
     	return new ResponseEntity("El usuario "+ userId + " tiene los motos en el taller", HttpStatus.OK);
   
     }
-    	public ResponseEntity<Bike> failBackSaveBike(@PathVariable("userId") int userId, @RequestBody Bike bike) {
+    	public ResponseEntity<Bike> failBackSaveBike(@PathVariable("userId") int userId, @RequestBody Bike bike, Throwable throwable) {
     	 	return new ResponseEntity("El usuario "+ userId + " no tiene dinero para motos", HttpStatus.OK);
             
         } 
     	
     	
-    private ResponseEntity<Map<String, Object>> failBackGetAll(@PathVariable("userId") int userId) {
+    private ResponseEntity<Map<String, Object>> failBackGetAll(@PathVariable("userId") int userId, Throwable throwable) {
     	   return new ResponseEntity("NO TIENE DE NA", HttpStatus.OK);
     }
 }
